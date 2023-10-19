@@ -1,0 +1,57 @@
+{% include 'layout.html' %}
+
+{% block body %}
+<div class="create_task_maincontent" style="display: none;" id="create_task_maincontent">
+    <form method="POST" id="form_field" onsubmit="console.log('ok');">
+        {% csrf_token %}
+
+        <div class="title_cnt">
+            <h2>Title:</h2>
+            <input type="text" name="title" id="title_id" value="">
+        </div>
+        <div class="des_cnt">
+            <h2>Description:</h2>
+            <textarea name="des" id="des_id" rows="5" value=""></textarea>
+        </div>
+        <div class="dt_cnt">
+            <h2>Date:</h2>
+            <input type="datetime-local" name="datetime" id="des_dt" value="">
+        </div>
+        <div class="tag_cnt">
+            <h2>Task:</h2>
+            <select id="tag_select" name="tag_sel">
+                {% for tag in alltags %}
+                    <option>{{tag.Tg_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn" id="submit_btn" >Add Task</button>
+
+    </form>
+</div>
+
+
+
+<div class="tasklist" id="task_list_maincnt">
+    {% if alltasks %}
+        {% for task in alltasks %}
+            <div class="active_task_area">
+                <div class="task_titile">{{task.Title}}</div>
+                <div class="task_des">{{task.Description}}</div>
+                <div class="task_dates">
+                    <div class="task_create_date">Created on: {{task.Created}}</div>
+                    <div class="task_tag">{{task.Tag.Tg_name}}</div>
+                    {% if  task.Status == "ot" %}
+                        <div class="task_timl_date" style="color: green;">Deadline: {{task.Timeline}}</div>
+                    {% else %}
+                        <div class="task_timl_date" style="color: red;">Deadline: {{task.Timeline}}</div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<div id="analyse_task_maincnt"></div>
+
+{% endblock %}

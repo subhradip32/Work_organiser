@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+</head>
+<body>
+    <h1 class="logo_text">Task Manger</h1>
+    <div class="nav_btns">
+        <button id="create_Task_btn">Create Task</button>
+        <button id="list_task_btn">Tasks Lists</button>
+        <button id="alz_task_btn">Tasks Analysis</button>
+    </div>
+    {% block body %}
+    {% endblock %}
+</body>
+<script src="{% static 'script.js' %}"></script>
+</html>
