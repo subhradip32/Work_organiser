@@ -6,13 +6,27 @@
     --btn_color_fg_hover: #ffffff; 
     --font_style:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --border_color: #474747;
-    --border_active_color: rgb(73, 255, 73); 
+    --border_active_color: rgb(32, 151, 255); 
     --task_card_text_color: white; 
 }
 
+/* animations */
+@keyframes button_hover {
+    0%{
+        transform: scale(1);
+    }100%{
+        transform: scale(1.1);
+    }
+}
+
+
+*{
+    font-family: var(--font_style);
+}
+
 body{
-    background-color:var(--back_color);
-    overflow: hidden;
+        background-color:var(--back_color);
+    overflow-y:visible;
 }
 
 .logo_text{
@@ -52,7 +66,7 @@ h2{
 .create_task_maincontent{
     margin: auto;
     width: 60%;
-    border: 3px solid var(--border_color);
+    border: 3px solid var(--border_active_color);
     padding: 10px;
 }
 .title_cnt , .des_cnt,.tag_cnt,.dt_cnt{
@@ -108,6 +122,7 @@ h2{
     background-color: var(--btn_color_bg_hover);
 }
 
+
 .active_task_area{
     margin: 1%;
     padding: 1%;
@@ -118,10 +133,40 @@ h2{
     font-weight: bolder;
     font-size: 200%;
 }.task_des{
+    width: auto;
+    display: flex;
+    justify-content: space-between;
     font-weight: bold;
     font-size: 170%;
-}.task_dates{
+}
+.task_dates{
     display: flex;
     justify-content: space-between;
     font-size: 100%;
+}
+
+
+.btnarea{
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    display: flex;
+    justify-content: space-between;
+}.com_btn,.post_btn,.cncl_btn{
+    font-size: 100%;
+    font-weight: bolder;
+    color: var(--btn_color_fg);
+    padding: 1.5%;
+    border: 1px solid transparent;
+    border-radius: 100%;
+    text-decoration: none;
+}.btnarea a:hover{
+    animation-name: button_hover;
+    animation-duration: 1s;
+}
+.com_btn{
+    background-color: rgb(12, 225, 12);
+}.post_btn{
+    background-color: #0095ff;
+}.cncl_btn{
+    background-color: rgb(255, 60, 60);
 }
