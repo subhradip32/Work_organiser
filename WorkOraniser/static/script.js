@@ -9,6 +9,7 @@ function togglebuttons(id){
         }
     });
 }
+
 document.getElementById("create_Task_btn").addEventListener('click',()=>{
     togglebuttons(0); 
 });
