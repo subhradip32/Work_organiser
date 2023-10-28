@@ -12,8 +12,6 @@ def load_landingPage(request):
         task_des = request.POST.get('des')
         task_time = request.POST.get('datetime')
         task_tag = request.POST.get('tag_sel')
-        # if task_time < timezone.now():
-        #     task_status = 'lt'
         task_instance = Tasks(Title = task_title,Description = task_des,Timeline = task_time,Tag = Tag.objects.get(Tg_name = task_tag))
         task_instance.save()
         return redirect('main_page')
@@ -51,8 +49,6 @@ def complete_task(request,task_id):
 
 
 def get_bar_data(request):
-    #get data from the database 
-    #number of completed tasks, delete. 
     def number_of_completed_tasks():
         com_num = 0 
         uncom_num = 0 
